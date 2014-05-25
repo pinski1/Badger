@@ -121,7 +121,9 @@ class tagReader():
             #p1.stdout.close()
 
         def caseBusyBadge():
-            print "both buttons pressed. Could this be 'busy' badge?"
+            labelText = raw_input("Enter label text: ") # less than 25 characters?
+            print "- Printing label \"{0}\"".format(labelText)
+            self.printbadge(name = labelText, comment = ' ')
 
         tag = self.tryTag()
         if tag == None:
@@ -129,8 +131,8 @@ class tagReader():
         # so we have a real tag
         tag2 = self.tryTag() # read it again
         if tag2 == tag:
-            # we beleive we have a real tag, correctly read, otherwise loop again
-            result= self.lookup(tag)
+            # we believe we have a real tag, correctly read, otherwise loop again
+            result = self.lookup(tag)
             print tag.encode('hex'),
             if result != None:
                 # do a pythonic case statement...
